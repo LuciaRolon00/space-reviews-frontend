@@ -69,7 +69,7 @@ export default function Nav() {
             <>
               <Link to="/juegos" onClick={() => setIsOpen(false)}>Juegos</Link>
               <button onClick={() => {
-                logout();
+                logoutUser();
                 setIsOpen(false);
               }}
                 className="text-red-400">
