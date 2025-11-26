@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from '../hooks/useAuth';
 
 export default function Nav() {
-  const { user, logout, isAuthenticated } = useAuth(); 
+  const { user, logoutUser , isAuthenticated } = useAuth(); 
 
   const [isOpen, setIsOpen] = useState(false);
 
