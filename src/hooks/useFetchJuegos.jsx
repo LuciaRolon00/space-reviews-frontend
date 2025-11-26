@@ -19,8 +19,9 @@ export const useFetchJuegos = () => {
       setError(null);
       setIsLoading(true);
       try {
-        const baseUrl = (import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api').replace(/\/$/, "");
-        const response = await fetch(`${baseUrl}/juegos/`, {
+        const rawUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
+        const API_URL = rawUrl.replace(/\/$/, "");
+        const response = await fetch(`${API_URL}/juegos/`, {
           headers: {
             'Authorization': `Bearer ${accessToken}`, 
             'Content-Type': 'application/json',
@@ -35,6 +36,7 @@ export const useFetchJuegos = () => {
         setJuegos(data);
 
       } catch (err) {
+        console.error(err);
         setError(err.message);
       } finally {
         setIsLoading(false);
