@@ -66,7 +66,6 @@ const response = await fetch(`${API_URL}/token/`, {
     }
   };
   
-  // ARREGLAR LOGOUT
   const logoutUser = () => { 
     localStorage.removeItem("accessToken");
     setAccessToken(null);

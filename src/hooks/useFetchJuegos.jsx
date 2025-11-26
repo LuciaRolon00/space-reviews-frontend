@@ -9,6 +9,7 @@ export const useFetchJuegos = () => {
   const { accessToken } = useAuth(); 
 
   useEffect(() => {
+    // Si no hay token, no intentamos buscar nada (protección del lado del cliente)
     if (!accessToken) { 
       setIsLoading(false);
       return;
@@ -18,9 +19,11 @@ export const useFetchJuegos = () => {
       setError(null);
       setIsLoading(true);
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/juegos/', {
+        const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
+        const response = await fetch(`${API_URL}/juegos/`, {
           headers: {
             'Authorization': `Bearer ${accessToken}`, 
+            'Content-Type': 'application/json',
           },
         });
 
