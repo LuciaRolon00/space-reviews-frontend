@@ -1,8 +1,27 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  // Con esto obtenemos el año actual
   const currentYear = new Date().getFullYear();
+
+  // Estados para la animación del newsletter
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("idle");
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    
+    setStatus("loading");
+
+    // Simula una espera
+    setTimeout(() => {
+      setStatus("success"); 
+      setEmail(""); 
+      setTimeout(() => {
+        setStatus("idle");
+      }, 3000);
+    }, 2000);
+  };
 
   return (
     <footer className="bg-[#1A202C] text-gray-300 py-12">
@@ -37,21 +56,44 @@ const Footer = () => {
           {/* Newsletter */}
           <div>
             <h4 className="font-bold text-white mb-4">Suscribite a nuestro Newsletter</h4>
-            <form className="flex flex-col sm:flex-row gap-2">
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
               <label htmlFor="newsletter" className="sr-only">Correo electrónico</label>
               <input 
                 id="newsletter"
                 type="email" 
                 placeholder="tu@email.com" 
-                className="w-full px-3 py-2 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-3 py-2 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:opacity-50"
                 required
+                disabled={status === 'loading' || status === 'success'}
               />
+              
               <button 
                 type="submit"
-                className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-md transition-colors"
+                disabled={status === 'loading' || status === 'success'}
+                className={`
+                  font-bold py-2 px-4 rounded-md transition-all duration-300 min-w-[120px] flex justify-center items-center
+                  ${status === 'success' 
+                    ? 'bg-green-600 text-white' 
+                    : 'bg-purple-600 hover:bg-purple-700 text-white'}
+                  ${status === 'loading' ? 'cursor-wait' : ''}
+                `}
                 aria-label="Suscribirse al newsletter"
               >
-                Suscribirme
+                {status === 'idle' && "Suscribirme"}
+
+                {status === 'loading' && (
+                  // Spinner
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                )}
+
+                {status === 'success' && (
+                  // Msj de éxito con check
+                  <span className="flex items-center gap-1">
+                    ¡Listo! ✓
+                  </span>
+                )}
               </button>
             </form>
           </div>

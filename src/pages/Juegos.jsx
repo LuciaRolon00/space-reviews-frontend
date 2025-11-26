@@ -9,7 +9,7 @@ const Juegos = () => {
 
   return (
     <div className="container mx-auto my-5">
-      <h1 className="text-center text-4xl font-bold text-white mb-8">Nuestros Juegos</h1>
+      <h1 className="text-center text-4xl font-bold text-white mb-8">Juegos</h1>
       <ItemListContainer juegos={juegos} /> 
     </div>
   );

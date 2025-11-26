@@ -107,7 +107,15 @@ const Contacto = () => {
         />
 
         <button type="submit" className={buttonStyles} disabled={isSubmitting}>
-          {isSubmitting ? 'Enviando...' : 'Enviar'}
+          {isSubmitting ? (
+          // Spinner
+          <div className="flex items-center justify-center gap-2">
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+            <span>Enviando...</span>
+          </div>
+        ) : (
+          "Enviar Mensaje"
+        )}
         </button>
       </form>
     </FormContainer>

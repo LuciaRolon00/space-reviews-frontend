@@ -97,15 +97,26 @@ const Registro = () => {
         {errors.confirmPassword && <p className="text-red-600 text-sm mb-2">{errors.confirmPassword.message}</p>}
 
         <button type="submit" className={buttonStyles} disabled={isSubmitting}>
-          {isSubmitting ? 'Registrando...' : 'Registrar'}
+          {isSubmitting ? (
+            // Spinner
+            <div className="flex items-center justify-center gap-2">
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              <span>Registrando...</span>
+            </div>
+          ) : (
+            "Registrarse"
+          )}
         </button>
 
-        <p className="mt-4 text-center text-sm">
-          ¿Ya tenés cuenta?{" "}
-          <Link to="/login" className="text-blue-600 hover:underline">
-            Iniciá sesión aquí
+        <div className="mt-6 text-center text-gray-600">
+          <span>¿Ya tenés cuenta? </span>
+          <Link
+            to="/login"
+            className="font-bold text-purple-300 hover:text-purple-100 transition-colors"
+          >
+            Inicia sesión aquí
           </Link>
-        </p>
+        </div>
       </form>
     </FormContainer>
   );

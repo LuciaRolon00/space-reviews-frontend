@@ -36,10 +36,10 @@ export const AuthProvider = ({ children }) => {
   }, [accessToken]);
 
   const loginUser = async (email, password) => { 
-    setLoading(true);
+    // setLoading(true);
     try {
       const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
-const response = await fetch(`${API_URL}/token/`, {
+      const response = await fetch(`${API_URL}/token/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ const response = await fetch(`${API_URL}/token/`, {
       console.error("Error en el login:", error);
       alert(error.message);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
   

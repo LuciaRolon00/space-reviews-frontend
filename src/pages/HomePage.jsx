@@ -14,7 +14,7 @@ const HomePage = () => {
         </p>
       </section>
 
-      <h2 className="text-4xl font-bold text-white mb-8">Nuestros Juegos Destacados</h2>
+      <h2 className="text-4xl font-bold text-white mb-8">Novedades Destacadas</h2>
 
       <FeaturedGames />
     </div>

@@ -7,8 +7,8 @@ export default function Login() {
   const { loginUser } = useAuth();
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
 
-  const onSubmit = (data) => {
-    loginUser(data.loginField, data.password);
+  const onSubmit = async (data) => {
+    await loginUser(data.loginField, data.password);
   };
 
   // Estilos
@@ -51,15 +51,26 @@ export default function Login() {
         {errors.password && <p className="text-red-600 text-sm mb-2">{errors.password.message}</p>}
 
         <button type="submit" className={buttonStyles} disabled={isSubmitting}>
-          {isSubmitting ? "Ingresando..." : "Iniciar Sesión"}
+          {isSubmitting ? (
+            // Spinner
+            <div className="flex items-center justify-center gap-2">
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              <span>Ingresando...</span>
+            </div>
+          ) : (
+            "Iniciar Sesión"
+          )}
         </button>
 
-        <p className="mt-4 text-center text-sm">
-          ¿Todavía no tenés cuenta?
-          <Link to="/registro" className="text-blue-600 hover:underline ml-1">
-            Registrate aquí
+        <div className="mt-6 text-center text-gray-600">
+          <span>¿No tenés cuenta? </span>
+          <Link
+            to="/registro"
+            className="font-bold text-purple-300 hover:text-purple-100 transition-colors"
+          >
+            Regístrate aquí
           </Link>
-        </p>
+        </div>
       </form>
     </FormContainer>
   );
