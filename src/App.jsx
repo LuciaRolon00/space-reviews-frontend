@@ -10,6 +10,7 @@ import Contacto from './pages/Contacto.jsx';
 import Juegos from './pages/Juegos.jsx';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
+import Terminos from './pages/Terminos.jsx';
 import NotFoundPage from './components/NotFoundPage.jsx';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/terminos" element={<Terminos />} />
         <Route path="/juego/:id" element={<DescJuego />} />
         <Route
           path="/juegos"
