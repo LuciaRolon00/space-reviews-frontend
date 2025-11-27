@@ -3,7 +3,14 @@ import JuegoCard from './JuegoCard.jsx';
 const ItemListContainer = ({ juegos }) => {
 
   if (!juegos || juegos.length === 0) {
-    return <p className="text-center text-yellow-400 text-xl p-8">Cargando juegos...</p>;
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen py-20">
+        <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p className="text-purple-200 text-xl font-semibold animate-pulse">
+          Cargando juegos...
+        </p>
+      </div>
+    );
   }
 
   return (
