@@ -6,12 +6,15 @@ const Juegos = () => {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh]">
+      <div className="flex flex-col items-center justify-center min-h-screen py-20">
         <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mb-4"></div>
-        <p className="text-purple-200 text-xl font-semibold animate-pulse">Cargando juegos...</p>
+        <p className="text-purple-200 text-xl font-semibold animate-pulse">
+          Cargando juegos...
+        </p>
       </div>
     );
-  }
+}
+
 
   if (error) {
     return (
