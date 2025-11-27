@@ -9,27 +9,25 @@ export const useFetchJuegos = () => {
   const { accessToken } = useAuth(); 
 
   useEffect(() => {
-    // Si no hay token, no intentamos buscar nada (protección del lado del cliente)
-    if (!accessToken) { 
-      setIsLoading(false);
-      return;
-    }
-
     const fetchData = async () => {
       setError(null);
       setIsLoading(true);
       try {
         const rawUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
         const API_URL = rawUrl.replace(/\/$/, "");
-        const response = await fetch(`${API_URL}/juegos/`, {
-          headers: {
-            'Authorization': `Bearer ${accessToken}`, 
-            'Content-Type': 'application/json',
-          },
-        });
+
+        const headers = {
+          'Content-Type': 'application/json',
+        };
+
+        if (accessToken) {
+          headers['Authorization'] = `Bearer ${accessToken}`;
+        }
+
+        const response = await fetch(`${API_URL}/juegos/`, { headers });
 
         if (!response.ok) {
-          throw new Error('No se pudieron cargar los juegos. Por favor, intenta iniciar sesión de nuevo.');
+          throw new Error('No se pudieron cargar los juegos.');
         }
 
         const data = await response.json();
