@@ -47,10 +47,10 @@ export default function JuegoCard({ juego }) {
         <hr className="my-1 border-t border-slate-300/50" />
 
         {/* Botones */}
-        <div className="pt-2 flex justify-between items-center">
+        <div className="pt-4 flex flex-col gap-3 justify-between items-center">
           <button
             type="button"
-            className={`w-48 rounded-lg px-3 py-2 text-sm font-bold text-black transition-colors ${clasesBoton}`}
+            className={`w-full rounded-lg px-3 py-2 text-sm font-bold text-black transition-colors ${clasesBoton}`}
             onClick={handleToggleFavorito}
             aria-label={textoBoton}
           >
@@ -59,7 +59,7 @@ export default function JuegoCard({ juego }) {
 
           <Link
             to={`/juego/${juego.id}`}
-            className="text-sm text-indigo-400 hover:text-indigo-300"
+            className="text-sm font-medium text-indigo-300 hover:text-white transition-colors hover:underline decoration-indigo-500 underline-offset-4"
           >
             Ver Detalles →
           </Link>

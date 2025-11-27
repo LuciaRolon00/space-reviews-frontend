@@ -25,7 +25,10 @@ export const AuthProvider = ({ children }) => {
       const decodedToken = parseJwt(accessToken);
       
       if (decodedToken && decodedToken.exp * 1000 > Date.now()) {
-        setUser({ email: decodedToken.email });
+        setUser({ 
+          email: decodedToken.email,
+          username: decodedToken.username 
+        });
       } else {
         localStorage.removeItem("accessToken");
         setAccessToken(null);

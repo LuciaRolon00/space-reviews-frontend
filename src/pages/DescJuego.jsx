@@ -12,7 +12,8 @@ export default function DescJuego() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch(`http://12.0.0.1:8000/api/juegos/${id}/`);
+        const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
+        const response = await fetch(`${API_URL}/juegos/${id}/`);
         
         if (!response.ok) {
           if (response.status === 404) {
@@ -70,6 +71,30 @@ export default function DescJuego() {
             <p className="text-yellow-400 text-2xl">
               {'⭐'.repeat(juego.estrellas)}
             </p>
+          </div>
+
+          {/* Bloque de Detalles Técnicos */}
+          <div className="flex flex-wrap gap-4 mb-6">
+            {/* Desarrollador */}
+            {juego.desarrollador && (
+              <div className="flex items-center gap-2 text-sm text-gray-300 bg-gray-800 px-3 py-1 rounded-full border border-gray-600">
+                👨‍💻 <span className="font-semibold">{juego.desarrollador}</span>
+              </div>
+            )}
+
+            {/* Género */}
+            {juego.genero && (
+              <div className="flex items-center gap-2 text-sm text-purple-200 bg-purple-900/50 px-3 py-1 rounded-full border border-purple-500/30">
+                🎮 <span className="font-semibold">{juego.genero}</span>
+              </div>
+            )}
+
+            {/* Plataforma */}
+            {juego.plataforma && (
+              <div className="flex items-center gap-2 text-sm text-blue-200 bg-blue-900/50 px-3 py-1 rounded-full border border-blue-500/30">
+                🖥️ <span className="font-semibold">{juego.plataforma}</span>
+              </div>
+            )}
           </div>
 
           {/* Descripción */}

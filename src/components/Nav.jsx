@@ -35,7 +35,7 @@ export default function Nav() {
         {isAuthenticated ? (
           <>
             <Link to="/juegos" className="bg-black text-white py-2 px-4 rounded-full hover:bg-[#bfaaf3] transition-colors cursor-pointer">JUEGOS</Link>
-            <span className="text-white font-semibold ml-4">Hola, {user?.email}</span>
+            <span className="text-white font-semibold ml-4">Hola, {user?.username}</span>
             <button onClick={logoutUser} className="bg-red-600 text-white py-2 px-4 rounded-full hover:bg-red-700 transition-colors cursor-pointer">
               LOGOUT
             </button>
