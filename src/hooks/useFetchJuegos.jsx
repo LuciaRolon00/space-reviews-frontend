@@ -13,6 +13,7 @@ export const useFetchJuegos = () => {
       setError(null);
       setIsLoading(true);
       try {
+        await new Promise(resolve => setTimeout(resolve, 2000));
         const rawUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
         const API_URL = rawUrl.replace(/\/$/, "");
 

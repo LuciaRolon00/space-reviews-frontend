@@ -12,6 +12,8 @@ export default function DescJuego() {
       setIsLoading(true);
       setError(null);
       try {
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
         const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
         const response = await fetch(`${API_URL}/juegos/${id}/`);
         
@@ -36,7 +38,12 @@ export default function DescJuego() {
   }, [id]);
 
   if (isLoading) {
-    return <p className="text-center text-white text-xl p-8">Cargando detalles del juego...</p>;
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[80vh]">
+        <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p className="text-purple-200 text-xl font-semibold animate-pulse">Analizando datos del juego...</p>
+      </div>
+    );
   }
 
   // Si no se encuentra el juego o hay otro error, se muestra un msj
