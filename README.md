@@ -1,12 +1,43 @@
-# React + Vite
+# 🌌 Space Reviews - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web para explorar y reseñar videojuegos, construida con React y estilizada con Tailwind CSS. Este cliente consume la API de Space Reviews y ofrece una experiencia de usuario fluida con autenticación y estados de carga animados.
 
-Currently, two official plugins are available:
+## 🎨 Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **Catálogo de Juegos:** Visualización de tarjetas con diseño responsivo.
+* **Autenticación:** Registro y Login de usuarios con JWT.
+* **Rutas Protegidas:** Acceso restringido a ciertas secciones mediante `ProtectedRoute`.
+* **UX Mejorada:** Spinners de carga, manejo de errores y feedback visual.
+* **Diseño:** Diseño temático espacial ("Space").
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologías
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **React + Vite:** Entorno de desarrollo rápido.
+* **Tailwind CSS:** Estilizado moderno y responsivo.
+* **React Router DOM:** Navegación SPA (Single Page Application).
+* **React Hook Form:** Manejo eficiente de formularios.
+
+## 🚀 Ejecución Local
+
+1.  Clonar el repositorio.
+2.  Instalar dependencias:
+    ```bash
+    npm install
+    ```
+3.  Configurar variables de entorno:
+    Crear un archivo `.env.local` y definir la URL del backend:
+    ```env
+    VITE_API_URL=[http://127.0.0.1:8000/api](http://127.0.0.1:8000/api)
+    ```
+4.  Iniciar el servidor de desarrollo:
+    ```bash
+    npm run dev
+    ```
+5.  Abrir `http://localhost:5173` en el navegador.
+
+## 🌐 Despliegue
+El proyecto está desplegado en **Vercel**.
+* **URL Pública:** [https://space-reviews-frontend.vercel.app](https://space-reviews-frontend.vercel.app)
+
+---
+*Proyecto realizado por Lucía Rolón para la Diplomatura Full Stack - UADE.*
