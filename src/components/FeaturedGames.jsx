@@ -4,7 +4,14 @@ import JuegoCard from './JuegoCard.jsx';
 const FeaturedGames = () => {
   const { juegos, loading, error } = useFetchJuegos();
 
-  if (loading) return <p className="text-center text-white py-8">Cargando destacados...</p>;
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20">
+        <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p className="text-purple-200 text-lg font-semibold animate-pulse">Cargando destacados...</p>
+      </div>
+    );
+  }
   if (error) return null; 
 
   const juegosDestacados = juegos.slice(0, 4);

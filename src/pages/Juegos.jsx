@@ -12,7 +12,18 @@ const Juegos = () => {
       </div>
     );
   }
-  if (error) return <div className="container mx-auto my-5 text-center text-red-400"><p>Error: {error}</p></div>;
+
+  if (error) {
+    return (
+      <div className="container mx-auto my-5 flex justify-center items-center min-h-[50vh]">
+        <div className="bg-red-900/30 p-8 rounded-xl border border-red-500/50 backdrop-blur-sm text-center max-w-lg">
+          <h2 className="text-3xl mb-4">⚠️</h2>
+          <h2 className="text-2xl text-red-300 font-bold mb-2">Error de Comunicación</h2>
+          <p className="text-gray-300">{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto my-5 min-h-screen">
