@@ -15,8 +15,10 @@ const Juegos = () => {
   if (error) return <div className="container mx-auto my-5 text-center text-red-400"><p>Error: {error}</p></div>;
 
   return (
-    <div className="container mx-auto my-5">
-      <h1 className="text-center text-4xl font-bold text-white mb-8">Juegos</h1>
+    <div className="container mx-auto my-5 min-h-screen">
+      <h1 className="text-center text-4xl font-bold text-white mb-8 tracking-wide drop-shadow-lg">
+        Nuestros Juegos
+      </h1>
       <ItemListContainer juegos={juegos} /> 
     </div>
   );
